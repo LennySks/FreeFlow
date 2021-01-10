@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-
+//test
         Scanner scanner = new Scanner(System.in);
         Circle[] circleArray = new Circle[]{new Circle(Color.RED, 2, 2), new Circle(Color.RED, 4, 4)};
 
