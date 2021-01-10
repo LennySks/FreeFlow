@@ -1,21 +1,32 @@
 package com.company;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 public class Game {
 
     private Date huidigeSpeeltijd;
+
     private ArrayList<Level> levels;
     private Level currentLevel;
 
+    private ArrayList<Circle> finishedCircles;
+    public HashMap<Color,String> colorStringHashMap = new HashMap<Color,String>();
+
+
     public Game(){
         levels = new ArrayList<Level>();
+        finishedCircles = new ArrayList<>();
+        colorStringHashMap.put(Color.BLACK, "Black");
+        colorStringHashMap.put(Color.RED, "Red");
     }
 
     public boolean placePipe(Circle circle, int x, int y){
         Pipe pipe = new Pipe(x, y, circle.getColor());
         return currentLevel.changeCellToPipe(pipe);
+
     }
 
     public Level getCurrentLevel() {
@@ -50,5 +61,12 @@ public class Game {
         }
     }
 
+    public ArrayList<Circle> getFinishedCircles() {
+        return finishedCircles;
+    }
+
+    public void setFinishedCircles(ArrayList<Circle> finishedCircles) {
+        this.finishedCircles = finishedCircles;
+    }
 
 }

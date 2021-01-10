@@ -14,7 +14,7 @@ public class Level {
         for (int y = 0; y < sizeY; y++) { //2D Array creation & initialization
             this.grid.add(new ArrayList<>());
             for (int x = 0; x < sizeX; x++) {
-                this.grid.get(y).add(new Cell(10,10));
+                this.grid.get(y).add(new Cell(x,y));
             }
         }
 
@@ -62,4 +62,6 @@ public class Level {
     public Circle[] getCircleArray() {
         return circleArray;
     }
+
+
 }
