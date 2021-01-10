@@ -73,39 +73,49 @@ public class Main {
                 {
                     case "UP":
                         --circleYpos;
+                        bool = placePipe(circleXpos, circleYpos, circle);
                         break;
                     case "DOWN":
                         ++circleYpos;
+                        bool = placePipe(circleXpos, circleYpos, circle);
                         break;
                     case "LEFT":
                         --circleXpos;
+                        bool = placePipe(circleXpos, circleYpos, circle);
                         break;
                     case "RIGHT":
                         ++circleXpos;
+                        bool = placePipe(circleXpos, circleYpos, circle);
+                        break;
+                    default:
+                        System.out.println("Incorrect direction. Try Again.");
                         break;
                 }
-                try{
-                    if (level1.getGrid().get(circleXpos).get(circleYpos) instanceof Circle){
-                        bool = false;
-                        game.getFinishedCircles().add(circle);
-                        game.getFinishedCircles().add((Circle)level1.getGrid().get(circleXpos).get(circleYpos));
-                        System.out.println("You completed the " + game.colorStringHashMap.get(circle.getColor()) + " circles.");
-                    }else{
-                        game.placePipe(circle, circleXpos, circleYpos);
-                    }
-                }catch (IndexOutOfBoundsException exception) {
-                    circleXpos = circle.getxPos();
-                    circleYpos = circle.getyPos();
-                    System.out.println("You hit a wall.");
-                    level1.clearGrid();
-                    bool = false;
-                    return;
-                }
+
             }
         } else {
             System.out.println("There is no circle here.");
         }
 
+    }
+
+    public static boolean placePipe(int xPos, int yPos, Circle circle){
+        try{
+            if (game.getCurrentLevel().getGrid().get(xPos).get(yPos) instanceof Circle){
+
+                game.getFinishedCircles().add(circle);
+                game.getFinishedCircles().add((Circle)game.getCurrentLevel().getGrid().get(xPos).get(yPos));
+                System.out.println("You completed the " + game.colorStringHashMap.get(circle.getColor()) + " circle.");
+                return false;
+            }else{
+                game.placePipe(circle, xPos, yPos);
+                return true;
+            }
+        }catch (IndexOutOfBoundsException exception) {
+            System.out.println("You hit a wall.");
+            game.getCurrentLevel().clearGrid();
+            return false;
+        }
     }
 
 
