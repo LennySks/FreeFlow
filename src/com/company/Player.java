@@ -1,7 +1,6 @@
 package com.company;
 
 public class Player {
-    //ZEB A KANKER MOEDER
     String Name;
     int Score;
 
