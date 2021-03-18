@@ -55,21 +55,17 @@ public class LoginView extends GridPane {
 
         this.loginButton.setStyle("-fx-color: #03A9F4;-fx-font-size: 14px;");
         this.registerButton.setStyle("-fx-color: #9E9E9E;-fx-font-size: 14px;");
-
     }
 
     Button getLoginButton() {
         return loginButton;
     }
-
     Button getRegisterButton() {
         return registerButton;
     }
-
     public TextField getUsernameTextField() {
         return usernameTextField;
     }
-
     public PasswordField getPasswordTextField() {
         return passwordTextField;
     }
